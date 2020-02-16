@@ -1,14 +1,18 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import Map from './Map';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 const Main = () => {
   return (
     <>
       <SafeAreaView>
-        <Text>Hello</Text>
+        <Map />
       </SafeAreaView>
     </>
   )
 };
+
+const styles = StyleSheet.create({
+});
 
 export default Main;

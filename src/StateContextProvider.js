@@ -2,16 +2,19 @@ import React, { createContext, useContext, useReducer } from 'react';
 export const StateContext = createContext();
 
 export const initialState = {
+  latitude: 0,
+  longitude: 0,
+  locationData: {}
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case 'loginUser':
+    case 'updateLocation':
       return {
         ...state,
-        authenticated: action.payload.authenticated,
-        user: action.payload.user,
-        verifiedCredentials: action.payload.verifiedCredentials
+        latitude: action.payload.latitude,
+        longitude: action.payload.longitude,
+        locationData: action.payload.locationData
       };
     default:
       return state;
