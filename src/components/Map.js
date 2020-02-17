@@ -13,8 +13,6 @@ const Map = (props) => {
     React.useEffect(() => {
         navigator.geolocation.getCurrentPosition(
             position => {
-                console.log('location:')
-                console.log(position)
                 dispatch({
                     type: "fetchUserLocation",
                     payload: {
@@ -25,8 +23,6 @@ const Map = (props) => {
                 handleMapFinished();
             },
             error => {
-                console.log('error while trying to get current position:')
-                console.log(error)
                 handleMapFinished();
             },
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }

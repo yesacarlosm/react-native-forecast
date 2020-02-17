@@ -4,7 +4,7 @@ export const StateContext = createContext();
 export const initialState = {
   latitude: 37.78825,
   longitude: -122.4324,
-  locationData: {}
+  locationData: null
 };
 
 export const reducer = (state, action) => {
@@ -22,6 +22,11 @@ export const reducer = (state, action) => {
         longitude: action.payload.longitude,
         locationData: action.payload.locationData
       };
+    case 'clearLocationData':
+      return {
+        ...state,
+        ...initialState
+      }
     default:
       return state;
   }

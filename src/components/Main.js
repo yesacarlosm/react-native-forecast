@@ -1,19 +1,60 @@
 import React from 'react';
 import Map from './Map';
 import Input from './Input';
-import { SafeAreaView } from 'react-native';
+import Data from './Data';
+import { useStateValue } from "../StateContextProvider";
+import { SafeAreaView, Alert } from 'react-native';
+import { fetchLocationDataByCityName, fetchLocationDataByCoords } from '../services/LocationService';
 
 const Main = () => {
+  const [{ latitude, longitude }, dispatch] = useStateValue();
   const [loadedMap, setLoadedMap] = React.useState(false);
+
+  updateSelectedCity = (data) => {
+    dispatch({
+      type: "updateLocation",
+      payload: {
+        latitude: data.coord.lat,
+        longitude: data.coord.lon,
+        locationData: {
+          weather: data.weather,
+          main: data.main,
+          wind: data.wind,
+          clouds: data.clouds,
+          sys: data.sys,
+          timezone: data.timezone,
+          name: data.name,
+          cod: data.cod
+        }
+      }
+    });
+  };
 
   React.useEffect(() => {
     if (loadedMap) {
-      console.log('FINISHED LOADING MAP');
+      fetchLocationDataByCoords(latitude, longitude)
+        .then(result => {
+          updateSelectedCity(result);
+        })
+        .catch(error => {
+          Alert.alert(error);
+        });
     }
   }, [loadedMap]);
 
   handleInputText = (text) => {
-    console.log(`NOW SEARCHING : ${text}`)
+    dispatch({
+      type: "clearLocationData"
+    });
+    fetchLocationDataByCityName(text)
+      .then(result => {
+        updateSelectedCity(result);
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 404) {
+          Alert.alert('Please enter a valid city.');
+        }
+      })
   }
 
   return (
@@ -21,6 +62,7 @@ const Main = () => {
       <SafeAreaView>
         <Input handleSubmit={text => handleInputText(text)} />
         <Map setLoadedMap={setLoadedMap} />
+        <Data />
       </SafeAreaView>
     </>
   )
