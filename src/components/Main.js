@@ -2,6 +2,7 @@ import React from 'react';
 import Map from './Map';
 import Input from './Input';
 import Data from './Data';
+import History from './History';
 import { useStateValue } from "../StateContextProvider";
 import { SafeAreaView, Alert, StyleSheet } from 'react-native';
 import { fetchLocationDataByCityName, fetchLocationDataByCoords } from '../services/LocationService';
@@ -70,6 +71,7 @@ const Main = () => {
         <Input handleSubmit={text => handleInputText(text)} />
         <Map setLoadedMap={setLoadedMap} />
         <Data />
+        <History />
       </SafeAreaView>
     </>
   )
