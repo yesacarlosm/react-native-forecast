@@ -21,12 +21,19 @@ const Input = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: '10%',
+    height: '5%',
     width: '100%',
-    backgroundColor: 'red'
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 25
   },
   input: {
-    ...StyleSheet.absoluteFillObject,
+    width: '80%',
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 6,
+    fontSize: 18,
+    paddingLeft: 5
   }
 });
 

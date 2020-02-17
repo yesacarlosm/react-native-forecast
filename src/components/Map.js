@@ -48,11 +48,16 @@ const Map = (props) => {
 const styles = StyleSheet.create({
     container: {
         height: 400,
-        width: '100%',
-        alignItems: 'center'
+        width: '95%',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderRadius: 6,
+        marginBottom: '10%'
     },
     map: {
         ...StyleSheet.absoluteFillObject,
+        borderRadius: 6
     },
 });
 

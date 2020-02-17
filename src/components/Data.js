@@ -11,33 +11,35 @@ const Loading = () => {
   const [{ latitude, longitude, locationData }, dispatch] = useStateValue();
   if (!locationData) {
     return (
-      <View style={[styles.container, styles.horizontal]}>
+      <View style={styles.loaderContainer}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     )
   } else {
     return (
-      <View style={styles.container}>
-        <Text>City Name: {locationData.name}</Text>
-        <Text>Latitude: {latitude} Longitude: {longitude}</Text>
-        <Text>Temperature: {locationData.main.temp}</Text>
-        <Text>Max Temperature: {locationData.main.temp_max}</Text>
-        <Text>Min Temperature: {locationData.main.temp_min}</Text>
-        <Text>Humidity: {locationData.main.humidity}</Text>
+      <View style={styles.dataContainer}>
+        <Text style={styles.text}>City: {locationData.name}</Text>
+        <Text style={styles.text}>Latitude: {latitude} Longitude: {longitude}</Text>
+        <Text style={styles.text}>Temperature: {locationData.main.temp}</Text>
+        <Text style={styles.text}>Max Temperature: {locationData.main.temp_max}</Text>
+        <Text style={styles.text}>Min Temperature: {locationData.main.temp_min}</Text>
+        <Text style={styles.text}>Humidity: {locationData.main.humidity}</Text>
       </View>
     )
   }
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  loaderContainer: {
+    justifyContent: 'center',
     padding: 10
+  },
+  dataContainer: {
+    justifyContent: 'flex-start',
+    alignItems: "center"
+  },
+  text: {
+    fontSize: 18
   }
 });
 

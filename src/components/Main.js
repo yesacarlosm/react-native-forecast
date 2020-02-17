@@ -3,7 +3,7 @@ import Map from './Map';
 import Input from './Input';
 import Data from './Data';
 import { useStateValue } from "../StateContextProvider";
-import { SafeAreaView, Alert } from 'react-native';
+import { SafeAreaView, Alert, StyleSheet } from 'react-native';
 import { fetchLocationDataByCityName, fetchLocationDataByCoords } from '../services/LocationService';
 
 const Main = () => {
@@ -59,7 +59,7 @@ const Main = () => {
 
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <Input handleSubmit={text => handleInputText(text)} />
         <Map setLoadedMap={setLoadedMap} />
         <Data />
@@ -67,5 +67,12 @@ const Main = () => {
     </>
   )
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignContent: 'center',
+    height: '100%'
+  }
+});
 
 export default Main;
