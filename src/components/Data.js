@@ -6,6 +6,7 @@ import {
   Text
 } from 'react-native';
 import { useStateValue } from "../StateContextProvider";
+import { getIcon } from '../utils/Utils';
 
 const Loading = () => {
   const [{ latitude, longitude, locationData }, dispatch] = useStateValue();
@@ -18,6 +19,9 @@ const Loading = () => {
   } else {
     return (
       <View style={styles.dataContainer}>
+        <View style={styles.weatherContainer}>
+          <Text style={styles.weatherIcon}>{getIcon(locationData.weather[0].icon)}</Text>
+        </View>
         <Text style={styles.text}>City: {locationData.name}</Text>
         <Text style={styles.text}>Latitude: {latitude} Longitude: {longitude}</Text>
         <Text style={styles.text}>Temperature: {locationData.main.temp}</Text>
@@ -40,6 +44,16 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18
+  },
+  weatherContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row'
+  },
+  weatherIcon: {
+    fontFamily: 'WeatherIcons-Regular',
+    fontSize: 60,
+    padding: 0,
+    margin: 0
   }
 });
 

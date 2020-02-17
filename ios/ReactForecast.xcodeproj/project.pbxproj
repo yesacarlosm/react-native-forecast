@@ -17,6 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ReactForecastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactForecastTests.m */; };
+		333F861723FA4FD3006EED2E /* weathericons-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 333F861623FA4FD2006EED2E /* weathericons-regular-webfont.ttf */; };
 		713B601BCA4BFEB3847A843C /* libPods-ReactForecastTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE705097E75A95C04D9648D /* libPods-ReactForecastTests.a */; };
 		A7FF01B1F7AFCB66BA8DF30F /* libPods-ReactForecast-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5415763FBB2D27F6543B3C7 /* libPods-ReactForecast-tvOSTests.a */; };
 		E265900CD5B0D877A0C5EFE1 /* libPods-ReactForecast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCA6507445A6D0C0F8252CE /* libPods-ReactForecast.a */; };
@@ -53,6 +54,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ReactForecast/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* ReactForecast-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReactForecast-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ReactForecast-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReactForecast-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		333F861623FA4FD2006EED2E /* weathericons-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "weathericons-regular-webfont.ttf"; path = "../src/assets/fonts/weathericons-regular-webfont.ttf"; sourceTree = "<group>"; };
 		3AE705097E75A95C04D9648D /* libPods-ReactForecastTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactForecastTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5443A683508D8E226D0998BE /* Pods-ReactForecastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactForecastTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactForecastTests/Pods-ReactForecastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6A245FDE54F6C5A82F2AA48D /* Pods-ReactForecast-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactForecast-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ReactForecast-tvOSTests/Pods-ReactForecast-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				333F861623FA4FD2006EED2E /* weathericons-regular-webfont.ttf */,
 				13B07FAE1A68108700A75B9A /* ReactForecast */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ReactForecastTests */,
@@ -194,7 +197,6 @@
 				5443A683508D8E226D0998BE /* Pods-ReactForecastTests.debug.xcconfig */,
 				A0901DE9D2DAFC75EBE164CD /* Pods-ReactForecastTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +310,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -336,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333F861723FA4FD3006EED2E /* weathericons-regular-webfont.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

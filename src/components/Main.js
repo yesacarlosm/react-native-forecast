@@ -5,6 +5,7 @@ import Data from './Data';
 import { useStateValue } from "../StateContextProvider";
 import { SafeAreaView, Alert, StyleSheet } from 'react-native';
 import { fetchLocationDataByCityName, fetchLocationDataByCoords } from '../services/LocationService';
+import { randomColor } from '../utils/Utils';
 
 const Main = () => {
   const [{ latitude, longitude }, dispatch] = useStateValue();
@@ -71,7 +72,8 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     alignContent: 'center',
-    height: '100%'
+    height: '100%',
+    backgroundColor: randomColor()
   }
 });
 
