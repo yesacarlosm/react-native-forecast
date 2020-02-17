@@ -22,7 +22,7 @@ const Loading = () => {
         <View style={styles.weatherContainer}>
           <Text style={styles.weatherIcon}>{getIcon(locationData.weather[0].icon)}</Text>
         </View>
-        <Text style={styles.text}><B>City:</B> {locationData.name}</Text>
+        <Text style={styles.text}><B>Place:</B> {locationData.name}</Text>
         <Text style={styles.text}><B>Latitude:</B> {latitude} <B>Longitude:</B> {longitude}</Text>
         <Text style={styles.text}><B>Temperature:</B> {locationData.main.temp}</Text>
         <Text style={styles.text}><B>Max Temperature:</B> {locationData.main.temp_max}</Text>
