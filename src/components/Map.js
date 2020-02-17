@@ -1,10 +1,14 @@
 import React from 'react';
 import MapView from 'react-native-maps';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useStateValue } from "../StateContextProvider";
 
-const Map = () => {
+const Map = (props) => {
     const [{ latitude, longitude }, dispatch] = useStateValue();
+
+    const handleMapFinished = () => {
+        if (props.setLoadedMap) props.setLoadedMap(true);
+    }
 
     React.useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -18,8 +22,13 @@ const Map = () => {
                         longitude: position.coords.longitude
                     }
                 });
+                handleMapFinished();
             },
-            error => Alert.alert(error.message),
+            error => {
+                console.log('error while trying to get current position:')
+                console.log(error)
+                handleMapFinished();
+            },
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
     }, []);

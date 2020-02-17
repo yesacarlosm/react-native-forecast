@@ -2,8 +2,8 @@ import React, { createContext, useContext, useReducer } from 'react';
 export const StateContext = createContext();
 
 export const initialState = {
-  latitude: 0,
-  longitude: 0,
+  latitude: 37.78825,
+  longitude: -122.4324,
   locationData: {}
 };
 
