@@ -10,6 +10,7 @@ import { randomColor } from '../utils/Utils';
 const Main = () => {
   const [{ latitude, longitude }, dispatch] = useStateValue();
   const [loadedMap, setLoadedMap] = React.useState(false);
+  const [randomBackgroundColor, setRandomBackgroundColor] = React.useState(randomColor());
 
   // Whenever some city data is fetch, the state gets updated.
   updateSelectedCity = (data) => {
@@ -30,6 +31,7 @@ const Main = () => {
         }
       }
     });
+    setRandomBackgroundColor(randomColor());
   };
 
   React.useEffect(() => {
@@ -64,7 +66,7 @@ const Main = () => {
 
   return (
     <>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={{ ...styles.container, backgroundColor: randomBackgroundColor }}>
         <Input handleSubmit={text => handleInputText(text)} />
         <Map setLoadedMap={setLoadedMap} />
         <Data />
@@ -76,8 +78,7 @@ const Main = () => {
 const styles = StyleSheet.create({
   container: {
     alignContent: 'center',
-    height: '100%',
-    backgroundColor: randomColor()
+    height: '100%'
   }
 });
 
