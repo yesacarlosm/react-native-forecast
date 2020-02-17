@@ -1,6 +1,5 @@
 //using icons: https://github.com/erikflowers/weather-icons
 export const getIcon = (iconCode) => {
-  console.log(`iconCode: ${iconCode}`)
   let map = {
     '01d': '\uf00d', // clear sky
     '02d': '\uf002', // few clouds
