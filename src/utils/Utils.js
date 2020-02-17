@@ -1,3 +1,6 @@
+import { Text } from 'react-native';
+import React from 'react';
+
 //using icons: https://github.com/erikflowers/weather-icons
 export const getIcon = (iconCode) => {
   let map = {
@@ -29,3 +32,5 @@ export const randomColor = () => {
 
   return "rgba(" + colors.join(",") + ",0.6)"
 };
+
+export const B = (props) => <Text style={{ fontWeight: 'bold' }}>{props.children}</Text>

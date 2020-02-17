@@ -11,6 +11,7 @@ const Main = () => {
   const [{ latitude, longitude }, dispatch] = useStateValue();
   const [loadedMap, setLoadedMap] = React.useState(false);
 
+  // Whenever some city data is fetch, the state gets updated.
   updateSelectedCity = (data) => {
     dispatch({
       type: "updateLocation",
@@ -44,6 +45,7 @@ const Main = () => {
   }, [loadedMap]);
 
   handleInputText = (text) => {
+    // This is mostly used for showing the loading state. We clear the data so the loading component is rendered.
     dispatch({
       type: "clearLocationData"
     });
@@ -54,6 +56,8 @@ const Main = () => {
       .catch(error => {
         if (error.response && error.response.status === 404) {
           Alert.alert('Please enter a valid city.');
+        } else {
+          Alert.alert(error);
         }
       })
   }

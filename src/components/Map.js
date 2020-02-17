@@ -11,6 +11,7 @@ const Map = (props) => {
   }
 
   React.useEffect(() => {
+    // React component did mount like: asks for user current geolocation permission.
     navigator.geolocation.getCurrentPosition(
       position => {
         dispatch({

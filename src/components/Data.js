@@ -6,7 +6,7 @@ import {
   Text
 } from 'react-native';
 import { useStateValue } from "../StateContextProvider";
-import { getIcon } from '../utils/Utils';
+import { getIcon, B } from '../utils/Utils';
 
 const Loading = () => {
   const [{ latitude, longitude, locationData }, dispatch] = useStateValue();
@@ -22,12 +22,12 @@ const Loading = () => {
         <View style={styles.weatherContainer}>
           <Text style={styles.weatherIcon}>{getIcon(locationData.weather[0].icon)}</Text>
         </View>
-        <Text style={styles.text}>City: {locationData.name}</Text>
-        <Text style={styles.text}>Latitude: {latitude} Longitude: {longitude}</Text>
-        <Text style={styles.text}>Temperature: {locationData.main.temp}</Text>
-        <Text style={styles.text}>Max Temperature: {locationData.main.temp_max}</Text>
-        <Text style={styles.text}>Min Temperature: {locationData.main.temp_min}</Text>
-        <Text style={styles.text}>Humidity: {locationData.main.humidity}</Text>
+        <Text style={styles.text}><B>City:</B> {locationData.name}</Text>
+        <Text style={styles.text}><B>Latitude:</B> {latitude} <B>Longitude:</B> {longitude}</Text>
+        <Text style={styles.text}><B>Temperature:</B> {locationData.main.temp}</Text>
+        <Text style={styles.text}><B>Max Temperature:</B> {locationData.main.temp_max}</Text>
+        <Text style={styles.text}><B>Min Temperature:</B> {locationData.main.temp_min}</Text>
+        <Text style={styles.text}><B>Humidity:</B> {locationData.main.humidity}</Text>
       </View>
     )
   }
