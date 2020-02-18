@@ -29,6 +29,10 @@ export const updateHistory = (placeName) => new Promise(
             } else {
               items.push(placeName);
             }
+          } else {
+            let index = items.indexOf(placeName);
+            items.splice(index, 1);
+            items.push(placeName);
           }
         }
         saveHistory({ items })
