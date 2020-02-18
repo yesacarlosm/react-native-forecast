@@ -6,15 +6,17 @@ import History from './History';
 import { useStateValue } from "../StateContextProvider";
 import { SafeAreaView, Alert, StyleSheet } from 'react-native';
 import { fetchLocationDataByCityName, fetchLocationDataByCoords } from '../services/LocationService';
+import { updateHistory } from '../services/HistoryService';
 import { randomColor } from '../utils/Utils';
 
 const Main = () => {
   const [{ latitude, longitude }, dispatch] = useStateValue();
   const [loadedMap, setLoadedMap] = React.useState(false);
   const [randomBackgroundColor, setRandomBackgroundColor] = React.useState(randomColor());
+  const [history, setHistory] = React.useState({});
 
   // Whenever some city data is fetch, the state gets updated.
-  updateSelectedCity = (data) => {
+  const updateSelectedCity = (data) => {
     dispatch({
       type: "updateLocation",
       payload: {
@@ -33,6 +35,10 @@ const Main = () => {
       }
     });
     setRandomBackgroundColor(randomColor());
+    updateHistory(data.name)
+      .then(result => {
+        setHistory(result);
+      });
   };
 
   React.useEffect(() => {
@@ -47,7 +53,7 @@ const Main = () => {
     }
   }, [loadedMap]);
 
-  handleInputText = (text) => {
+  const handleSearchByText = (text) => {
     // This is mostly used for showing the loading state. We clear the data so the loading component is rendered.
     dispatch({
       type: "clearLocationData"
@@ -68,10 +74,10 @@ const Main = () => {
   return (
     <>
       <SafeAreaView style={{ ...styles.container, backgroundColor: randomBackgroundColor }}>
-        <Input handleSubmit={text => handleInputText(text)} />
+        <Input handleSubmit={text => handleSearchByText(text)} />
         <Map setLoadedMap={setLoadedMap} />
         <Data />
-        <History />
+        <History items={history} handleSearch={(text) => handleSearchByText(text)}/>
       </SafeAreaView>
     </>
   )

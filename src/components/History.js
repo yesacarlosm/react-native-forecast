@@ -1,10 +1,16 @@
 import React from 'react';
 import Modal from "react-native-modal";
-import { TouchableHighlight, View, StyleSheet, SafeAreaView, Button } from 'react-native';
+import { TouchableHighlight, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { B } from '../utils/Utils';
 
-const History = () => {
+const History = (props) => {
   const [modalVisible, setModalVisible] = React.useState(false);
+
+  const handleSelectHistoryItem = (text) => {
+    if (props.handleSearch) {
+      props.handleSearch(text);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -12,54 +18,29 @@ const History = () => {
         <SafeAreaView>
           <View style={styles.modalWrapper}>
             <View style={styles.modalContainer}>
-              <B style={styles.modalTitle}>Last 5 searched:</B>
+              <B>Last 5 searched:</B>
+              {
+                props.items && props.items.length > 0 && props.items.slice(0).reverse().map((item, index) => {
+                  return (
+                    <TouchableHighlight
+                      style={styles.modalHistoryItem}
+                      key={index}
+                      onPress={() => {
+                        handleSelectHistoryItem(item);
+                        setModalVisible(false);
+                      }}>
+                      <B>{item}</B>
+                    </TouchableHighlight>
+                  )
+                })
+              }
 
               <TouchableHighlight
-                style={{ ...styles.modalHistoryItem, paddingTop: 20 }}
+                style={{ ...styles.btn, marginTop: 15 }}
                 onPress={() => {
                   setModalVisible(false);
                 }}>
-                <B style={styles.btnText}>Hide History</B>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                style={styles.modalHistoryItem}
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <B style={styles.btnText}>Hide History</B>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                style={styles.modalHistoryItem}
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <B style={styles.btnText}>Hide History</B>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                style={styles.modalHistoryItem}
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <B style={styles.btnText}>Hide History</B>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                style={{ ...styles.modalHistoryItem, paddingBottom: 20 }}
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <B style={styles.btnText}>Hide History</B>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                style={styles.btn}
-                onPress={() => {
-                  setModalVisible(false);
-                }}>
-                <B style={styles.btnText}>Hide History</B>
+                <B>Hide History</B>
               </TouchableHighlight>
             </View>
           </View>
@@ -71,7 +52,7 @@ const History = () => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <B style={styles.btnText}>Show History</B>
+        <B>Show History</B>
       </TouchableHighlight>
     </View>
   )
@@ -93,12 +74,12 @@ const styles = StyleSheet.create({
   modalContainer: {
     alignItems: 'center'
   },
-  modalTitle: {
-    fontSize: 16,
-    alignItems: 'center'
-  },
   modalHistoryItem: {
-    padding: 8
+    marginVertical: 10,
+    padding: 8,
+    borderColor: 'black',
+    borderRadius: 10,
+    borderWidth: 1,
   },
   btn: {
     marginRight: 40,
@@ -108,10 +89,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
-  },
-  btnText: {
-    color: '#fff',
-    textAlign: 'center',
   }
 });
 
