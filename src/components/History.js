@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from "react-native-modal";
-import { TouchableHighlight, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { TouchableHighlight, View, StyleSheet, SafeAreaView } from 'react-native';
 import { B } from '../utils/Utils';
 
 const History = (props) => {
