@@ -15,8 +15,8 @@ const Main = () => {
   const [randomBackgroundColor, setRandomBackgroundColor] = React.useState(randomColor());
   const [history, setHistory] = React.useState({});
 
-  // Whenever some city data is fetch, the state gets updated.
   const updateSelectedCity = (data) => {
+    // Whenever some city data is fetch, the state gets updated.
     dispatch({
       type: "updateLocation",
       payload: {
